@@ -33,19 +33,39 @@ namespace Involved.HTF.Wpf
             _aqualonService = new AqualonService(client);
         }
 
-        private async void btnGet_Click(object sender, RoutedEventArgs e)
+        private async void BtnGet_Click(object sender, RoutedEventArgs e)
         {
             await client.Login(TeamName, Password);
             puzzleString = (await _aqualonService.GetSampleChallengeOne()).Commands;
             txtResult.Text = puzzleString;
         }
 
-        private async void btnPost_Click(object sender, RoutedEventArgs e)
+        private async void BtnPost_Click(object sender, RoutedEventArgs e)
         {
             var result = _aqualonService.CalculatePosition(puzzleString);
 
             var response = await _aqualonService.PostSampleChallengeOne(result);
             txtPostContent.Text = response;
+        }
+
+        private void BtnCosmicGet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCosmicPost_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnGetCentauri_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnPostCentauri_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

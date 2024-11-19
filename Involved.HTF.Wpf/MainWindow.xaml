@@ -8,10 +8,20 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button x:Name="btnGet" Content="Get Puzzle
-                " HorizontalAlignment="Left" Margin="58,32,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="btnGet_Click"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Margin="165,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="112"/>
-        <Button x:Name="btnPost" Content="Post Puzzle                 " HorizontalAlignment="Left" Margin="58,188,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="btnPost_Click"/>
-        <TextBox x:Name="txtPostContent" HorizontalAlignment="Left" Margin="165,188,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="112"/>
+                " HorizontalAlignment="Left" Margin="58,32,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnGet_Click"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Margin="165,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <Button x:Name="btnPost" Content="Post Puzzle                 " HorizontalAlignment="Left" Margin="58,89,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnPost_Click"/>
+        <TextBox x:Name="txtPostContent" HorizontalAlignment="Left" Margin="165,89,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <Label x:Name="lblOne" Content="Aqualon (A-1)" HorizontalAlignment="Left" Margin="294,6,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold"/>
+        <Label x:Name="lblOne_Copy" Content="Cosmic Stone (B-1)" HorizontalAlignment="Left" Margin="294,139,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold"/>
+        <Button x:Name="btnCosmicGet" Content="Get Puzzle                 " HorizontalAlignment="Left" Margin="58,173,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnCosmicGet_Click"/>
+        <Button x:Name="btnCosmicPost" Content="Post Puzzle                 " HorizontalAlignment="Left" Margin="58,217,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnCosmicPost_Click"/>
+        <TextBox x:Name="txtCosmicGet" HorizontalAlignment="Left" Margin="165,173,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <TextBox x:Name="txtCosmicPost" HorizontalAlignment="Left" Margin="165,217,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <Button x:Name="btnGetCentauri" Content="Get Puzzle                 " HorizontalAlignment="Left" Margin="58,280,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnGetCentauri_Click"/>
+        <Button x:Name="btnPostCentauri" Content="Post Puzzle                 " HorizontalAlignment="Left" Margin="58,333,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnPostCentauri_Click"/>
+        <TextBox x:Name="txtCentaurGet" HorizontalAlignment="Left" Margin="165,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <TextBox x:Name="txtCentauriPost" HorizontalAlignment="Left" Margin="165,333,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
 
     </Grid>
 </Window>
