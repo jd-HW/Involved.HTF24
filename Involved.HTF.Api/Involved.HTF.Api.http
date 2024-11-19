@@ -1,0 +1,6 @@
+@Involved.HTF.Api_HostAddress = http://localhost:5068
+
+GET {{Involved.HTF.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
