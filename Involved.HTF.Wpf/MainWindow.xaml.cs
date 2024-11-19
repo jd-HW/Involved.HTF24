@@ -1,5 +1,7 @@
 ﻿using Involved.HTF.Common;
+using Involved.HTF.Common.Dto.Battle;
 using Involved.HTF.Common.Services;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,10 +22,14 @@ namespace Involved.HTF.Wpf
     {
         HackTheFutureClient client;
         AqualonService _aqualonService;
+        BattleCentauriService _battleCentauriService;
         CosmicStoneService _cosmicStoneService;
 
         const string TeamName = "Tune-Squad";
         const string Password = "340cf9e7-fcf2-46d7-adc8-468487c35eaf";
+
+        private List<BattleTeamADto> teamA;
+        private List<BattleTeamBDto> teamB;
 
         string puzzleString = string.Empty;
         string alienString = string.Empty;
@@ -33,6 +39,7 @@ namespace Involved.HTF.Wpf
             InitializeComponent();
             client = new HackTheFutureClient();
             _aqualonService = new AqualonService(client);
+            _battleCentauriService = new BattleCentauriService(client);
             _cosmicStoneService = new CosmicStoneService(client);
         }
 
@@ -66,14 +73,37 @@ namespace Involved.HTF.Wpf
             txtCosmicPost.Text = response;
         }
 
-        private void BtnGetCentauri_Click(object sender, RoutedEventArgs e)
+        private async void BtnGetCentauri_Click(object sender, RoutedEventArgs e)
         {
+            await client.Login(TeamName, Password);
+            var p = (await _battleCentauriService.GetSampleChallenge());
+            teamB = p.TeamB;
+            teamA = p.TeamA;
 
+            List<string> stringA = new();
+            List<string> stringB = new();
+
+            for (int i = 0; i < teamA.Count; i++)
+            {
+                stringA.Add($"AlienA{i + 1}: Strength: {teamA[i].Strength}, Speed: {teamA[i].Speed}, Health: {teamA[i].Health}");
+            }
+
+            // Process Team B
+            for (int i = 0; i < teamB.Count; i++)
+            {
+                stringB.Add($"AlienB{i + 1}: Strength: {teamB[i].Strength}, Speed: {teamB[i].Speed}, Health: {teamB[i].Health}");
+            }
+
+            txtCentaurGet.Text = String.Join(",", stringA.Concat(stringB));
         }
 
-        private void BtnPostCentauri_Click(object sender, RoutedEventArgs e)
+        private async void BtnPostCentauri_Click(object sender, RoutedEventArgs e)
         {
+            var battleListDto = new BattleListDto { TeamA = teamA, TeamB = teamB };
+            var result = _battleCentauriService.ReturnWinningTeam(battleListDto);
 
+            var response = await _battleCentauriService.PostSampleChallenge(result);
+            txtCentauriPost.Text = response;
         }
     }
 }
