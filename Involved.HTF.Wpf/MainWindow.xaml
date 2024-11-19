@@ -22,6 +22,7 @@
         <Button x:Name="btnPostCentauri" Content="Post Puzzle                 " HorizontalAlignment="Left" Margin="58,333,0,0" VerticalAlignment="Top" Height="29" Width="70" Click="BtnPostCentauri_Click"/>
         <TextBox x:Name="txtCentaurGet" HorizontalAlignment="Left" Margin="165,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
         <TextBox x:Name="txtCentauriPost" HorizontalAlignment="Left" Margin="165,333,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="607" Height="29"/>
+        <Label x:Name="lblOne_Copy1" Content="Centauri (A-2)" HorizontalAlignment="Left" Margin="294,251,0,0" VerticalAlignment="Top" Width="141" FontWeight="Bold"/>
 
     </Grid>
 </Window>
