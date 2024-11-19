@@ -23,6 +23,7 @@ namespace Involved.HTF.Wpf
         HackTheFutureClient client;
         AqualonService _aqualonService;
         BattleCentauriService _battleCentauriService;
+        CosmicStoneService _cosmicStoneService;
 
         const string TeamName = "Tune-Squad";
         const string Password = "340cf9e7-fcf2-46d7-adc8-468487c35eaf";
@@ -31,6 +32,7 @@ namespace Involved.HTF.Wpf
         private List<BattleTeamBDto> teamB;
 
         string puzzleString = string.Empty;
+        string alienString = string.Empty;
 
         public MainWindow()
         {
@@ -38,6 +40,7 @@ namespace Involved.HTF.Wpf
             client = new HackTheFutureClient();
             _aqualonService = new AqualonService(client);
             _battleCentauriService = new BattleCentauriService(client);
+            _cosmicStoneService = new CosmicStoneService(client);
         }
 
         private async void BtnGet_Click(object sender, RoutedEventArgs e)
@@ -55,14 +58,19 @@ namespace Involved.HTF.Wpf
             txtPostContent.Text = response;
         }
 
-        private void BtnCosmicGet_Click(object sender, RoutedEventArgs e)
+        private async void BtnCosmicGet_Click(object sender, RoutedEventArgs e)
         {
-
+            await client.Login(TeamName, Password);
+            alienString = (await _cosmicStoneService.GetSampleChallenge()).AlienMessage;
+            txtCosmicGet.Text = alienString;
         }
 
-        private void BtnCosmicPost_Click(object sender, RoutedEventArgs e)
+        private async void BtnCosmicPost_Click(object sender, RoutedEventArgs e)
         {
+            var result = _cosmicStoneService.ConvertSymbolsToLetters(alienString);
 
+            var response = await _cosmicStoneService.PostAnswer(result);
+            txtCosmicPost.Text = response;
         }
 
         private async void BtnGetCentauri_Click(object sender, RoutedEventArgs e)
